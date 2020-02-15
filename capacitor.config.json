@@ -1,0 +1,8 @@
+{
+  "appId": "com.gamedesign.test",
+  "appName": "gameDesignTest",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "cordova": {}
+}
