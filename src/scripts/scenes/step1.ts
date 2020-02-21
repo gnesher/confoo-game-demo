@@ -26,21 +26,25 @@ export class MainScene extends Phaser.Scene {
   create(): void {
     this.mapSetup();
     this.playerSetup();
+    this.animationSetup();
     this.cameraSetup();
   }
 
   update() {
-    if (this.cursors.left.isDown) {
+    if (this.cursors.left?.isDown) {
       this.player.setVelocityX(-120);
       this.player.flipX = true;
-    } else if (this.cursors.right.isDown) {
+      this.player.anims.play('walk', true);
+    } else if (this.cursors.right?.isDown) {
       this.player.setVelocityX(120);
       this.player.flipX = false;
+      this.player.anims.play('walk', true);
     } else {
       this.player.setVelocityX(0);
+      this.player.anims.play('idle', true);
     }
     if (
-      (this.cursors.space.isDown || this.cursors.up.isDown) &&
+      (this.cursors.space?.isDown || this.cursors.up?.isDown) &&
       // @ts-ignore
       this.player.body.onFloor()
     ) {
@@ -55,9 +59,9 @@ export class MainScene extends Phaser.Scene {
   private mapSetup() {
     this.map = this.make.tilemap({ key: "map" });
     this.tiles = this.map.addTilesetImage("sheet", "sheet", 16, 16, 1, 2);
-    this.groundLayer = this.map.createStaticLayer("ground", this.tiles, 0, 110);
-    this.death = this.map.createStaticLayer("death", this.tiles, 0, 110);
     this.background = this.map.createStaticLayer("background", this.tiles, 0, 110);
+    this.death = this.map.createStaticLayer("death", this.tiles, 0, 110);
+    this.groundLayer = this.map.createStaticLayer("ground", this.tiles, 0, 110);
     this.groundLayer.setCollisionByExclusion([-1]);
     this.death.setCollisionByExclusion([-1]);
   }
@@ -78,6 +82,24 @@ export class MainScene extends Phaser.Scene {
   }
 
   private animationSetup() {
+    const walkFrames = this.anims.generateFrameNames("player", {
+      start: 0,
+      end: 3,
+      prefix: "player-",
+      suffix: ".png"
+    });
+    this.anims.create({
+      key: "walk",
+      frames: walkFrames,
+      frameRate: 10,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: "idle",
+      frames: [{ key: "player", frame: "player-0.png" }],
+      frameRate: 10
+    });
 
   }
 }
