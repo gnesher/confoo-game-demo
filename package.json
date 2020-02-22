@@ -1,8 +1,8 @@
 {
-  "name": "phaser-project-template",
-  "version": "3.22.0",
-  "description": "Phaser 3 starter template with TypeScript and webpack.",
-  "homepage": "https://github.com/yandeu/phaser-project-template#readme",
+  "name": "confoo-game-demo",
+  "version": "1.0.0",
+  "description": "Phaser 3 arcade example for Confoo 2020 talk",
+  "homepage": "https://github.com/gnesher/confoo-game-demo",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack/webpack.dev.js",
@@ -14,21 +14,15 @@
     "Phaser3",
     "html5 game",
     "TypeScript",
-    "webpack",
-    "starter"
+    "webpack"
   ],
   "author": {
-    "name": "Yannick Deubel",
-    "url": "https://github.com/yandeu"
+    "name": "Guy Nesher",
+    "url": "https://github.com/gnesher/confoo-game-demo"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yandeu/phaser-project-template.git"
-  },
-  "template": {
-    "name": "phaser-project-template",
-    "url": "https://github.com/yandeu/phaser-project-template",
-    "author": "Yannick Deubel (https://github.com/yandeu)"
+    "url": "https://github.com/gnesher/confoo-game-demo.git"
   },
   "engines": {
     "node": ">=8.0.0"
